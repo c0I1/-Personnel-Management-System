@@ -20,6 +20,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for department
 -- ----------------------------
+create database management;
 DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '部门编号',
