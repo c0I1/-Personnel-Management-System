@@ -1,0 +1,6 @@
+{
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.NoBrowser": false,
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "C:\\Program Files (x86)\\ChromeCore\\ChromeCore.exe"
+}
