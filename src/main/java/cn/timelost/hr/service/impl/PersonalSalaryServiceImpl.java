@@ -55,7 +55,7 @@ public class PersonalSalaryServiceImpl implements PersonalSalaryService {
     }
 
     @Override
-    public PersonalSalary find(int id) {
+    public PersonalSalary find2(int id) {
         PersonalSalary personalSalaries = personalSalaryDao.selectByPrimaryKey(id);
         if (ObjectUtils.isEmpty(personalSalaries)) {
             throw new BaseException(ResultEnum.PERSONAL_SALARY_NOT_EXIST);

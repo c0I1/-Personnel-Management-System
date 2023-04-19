@@ -15,13 +15,8 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-
 import javax.annotation.Resource;
 
-/**
- * @author: Jyf
- * @Date: 2021/2/18 20:47
- */
 @Slf4j
 public class UserRealm extends AuthorizingRealm {
 
@@ -35,6 +30,7 @@ public class UserRealm extends AuthorizingRealm {
         return token instanceof JWTToken;
     }
 
+    //授权
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         log.info("用户授权...");
@@ -46,18 +42,17 @@ public class UserRealm extends AuthorizingRealm {
         return authorizationInfo;
     }
 
+    //认证
     @Override
+    //我们在doGetAuthenticationInfo方法内部是需要查询数据库操作的
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         log.info("用户认证...");
-
         String token = (String) authenticationToken.getCredentials();
         String username = JWTUtils.getUsername(token);
-
         if (username == null) {
             throw new AuthenticationException("token异常");
         }
         User userBean = userService.findByUsername(username);
-
         if (!JWTUtils.verify(token, username, userBean.getPassword())) {
             throw new AuthenticationException("密码错误");
         }

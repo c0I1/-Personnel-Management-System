@@ -1,13 +1,8 @@
 package cn.timelost.hr.exception;
 
 import cn.timelost.hr.enums.ResultEnum;
-import lombok.Data;
 import lombok.Getter;
 
-/**
- * @author: Jyf
- * @Date: 2021/1/25 11:40
- */
 @Getter
 public class BaseException extends RuntimeException {
 

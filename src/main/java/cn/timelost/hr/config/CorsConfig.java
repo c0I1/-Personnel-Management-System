@@ -3,14 +3,9 @@ package cn.timelost.hr.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-/**
- * @author: Jyf
- * @Date: 2021/1/26 10:16
- */
 @Configuration
 public class CorsConfig implements WebMvcConfigurer {
-    
+    //跨域问题
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         // 设置允许跨域的路径

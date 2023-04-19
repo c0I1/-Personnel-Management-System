@@ -7,12 +7,10 @@ import cn.timelost.hr.vo.input.PersonalSalaryForm;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
-
 /**
  * @author: Jyf
  * @Date: 2021/2/7 10:17
@@ -39,7 +37,7 @@ public class PersonalSalaryController {
 
     @GetMapping("/salary/{id}")
     public PersonalSalary findById(@PathVariable Integer id) {
-        return personalSalaryService.find(id);
+        return personalSalaryService.find2(id);
     }
 
     @PostMapping("/salary")

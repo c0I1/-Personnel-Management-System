@@ -10,12 +10,10 @@ import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
-
-/**
- * @author: Jyf
- * @Date: 2021/1/25 10:24
- */
-@RestControllerAdvice(basePackages = {"cn.timelost.hr.controller"}) // 注意哦，这里要加上需要扫描的包
+//对controller的返回值进行统一的处理包装
+//https://blog.csdn.net/xueyijin/article/details/122524335
+@RestControllerAdvice(basePackages = {"cn.timelost.hr.controller"})
+// 需要扫描的包
 public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> aClass) {

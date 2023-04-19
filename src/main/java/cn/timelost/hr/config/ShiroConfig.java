@@ -18,11 +18,8 @@ import org.springframework.context.annotation.DependsOn;
 
 import cn.timelost.hr.config.realm.UserRealm;
 
-/**
- * @author: Jyf
- * @Date: 2021/2/18 20:50
- */
 @Configuration
+//https://blog.csdn.net/njpkhuan/article/details/100563123
 public class ShiroConfig {
 
     @Bean
@@ -34,9 +31,10 @@ public class ShiroConfig {
     }
 
     @Bean("securityManager")
+    //配置核心安全事务管理器
     public DefaultWebSecurityManager getManager() {
         DefaultWebSecurityManager manager = new DefaultWebSecurityManager();
-        // 使用自己的realm
+        // 设置自定义realm
         manager.setRealm(customRealm());
         //注入缓存管理器
 //        manager.setCacheManager(ehCacheManager());
@@ -54,6 +52,11 @@ public class ShiroConfig {
         return manager;
     }
 
+    /**
+     * ShiroFilterFactoryBean 处理拦截资源文件问题。
+     * 注意：初始化ShiroFilterFactoryBean的时候需要注入：SecurityManager
+     * Web应用中,Shiro可控制的Web请求必须经过Shiro主过滤器的拦截
+     */
     @Bean("shiroFilter")
     public ShiroFilterFactoryBean factory(DefaultWebSecurityManager securityManager) {
 
@@ -67,10 +70,18 @@ public class ShiroConfig {
         factoryBean.setSecurityManager(securityManager);
 
         Map<String, String> filterRuleMap = new HashMap<>();
-
+        //配置不登录可以访问的资源，anon 表示资源都可以匿名访问
         filterRuleMap.put("/image/**", "anon");
         filterRuleMap.put("/favicon.ico", "anon");
         filterRuleMap.put("/user/login", "anon");
+        //添加shiro的内置过滤器
+        /*
+        anon: 无需认证即可访问
+        authc: 必须认证才能用
+        user: 必须拥有 “记住我” 功能才能用
+        perms: 拥有对某个资源的权限才能用
+        role: 拥有某个角色权限才能访问
+        */
 
         //开放API文档接口
 //        filterRuleMap.put("/swagger-ui.html", "anon");
@@ -79,6 +90,7 @@ public class ShiroConfig {
 //        filterRuleMap.put("/v2/**","anon");
 
         // 所有请求通过我们自己的JWT Filter
+        //其他资源都需要认证
         filterRuleMap.put("/**", "jwt");
 
         factoryBean.setFilterChainDefinitionMap(filterRuleMap);

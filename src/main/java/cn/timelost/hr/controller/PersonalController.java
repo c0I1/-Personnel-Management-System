@@ -13,11 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
-
-/**
- * @author: Jyf
- * @Date: 2021/1/28 18:16
- */
 @RestController
 public class PersonalController {
 

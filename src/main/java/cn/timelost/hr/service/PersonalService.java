@@ -8,10 +8,7 @@ import com.github.pagehelper.PageInfo;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * @author: Jyf
- * @Date: 2021/1/28 17:37
- */
+
 public interface PersonalService {
 
     PageInfo<PersonalVo> findAll(int pageNum, int pageSize, int departmentId, String personalName, int workStatus);

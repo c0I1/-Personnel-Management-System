@@ -36,6 +36,7 @@ public class PersonalRewardServiceImpl implements PersonalRewardService {
     PersonalService personalService;
 
     @Override
+    //spEL
     @Cacheable(key = "#year+'-'+#month+'-'+#departmentName+'-'+#personalId+'-'+#pageNum+'-'+#pageSize")
     public PageInfo<PersonalReward> findAll(int year, int month, String departmentName, int personalId, int pageNum, int pageSize) {
         if (ObjectUtils.isEmpty(departmentName)) {

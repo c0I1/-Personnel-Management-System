@@ -21,10 +21,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
 
-/**
- * @author: Jyf
- * @Date: 2021/2/18 20:54
- */
 @Component
 @Slf4j
 public class JWTFilter extends BasicHttpAuthenticationFilter {

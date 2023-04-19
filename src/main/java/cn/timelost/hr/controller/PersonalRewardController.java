@@ -47,8 +47,10 @@ public class PersonalRewardController {
     @PostMapping("/reward")
     @RequiresRoles("admin")
     public ResultVo insert(@RequestBody @Valid PersonalRewardForm personalRewardForm) {
+
         personalRewardService.insert(personalRewardForm);
         return ResultVo.success();
+
     }
 
     @PutMapping("/reward/{id}")

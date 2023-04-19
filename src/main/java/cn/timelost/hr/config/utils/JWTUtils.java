@@ -12,11 +12,6 @@ import org.apache.shiro.authc.AuthenticationException;
 
 import java.util.Date;
 import java.util.Random;
-
-/**
- * @author: Jyf
- * @Date: 2021/2/18 20:39
- */
 @Slf4j
 public class JWTUtils {
     /**
@@ -26,7 +21,7 @@ public class JWTUtils {
 
     /**
      * 生成签名,2min后过期
-     *
+     * HMAC256加密
      * @param username 用户名
      * @param secret   用户的密码
      * @return 加密的token
@@ -84,8 +79,8 @@ public class JWTUtils {
 
     /**
      * 生成随机盐
-     *
-     * @return 随机盐
+     *https://blog.csdn.net/qq_43532342/article/details/93040671
+     * @return 随机盐 增加安全性
      */
     public static String getSalt() {
         char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.+-*/()".toCharArray();

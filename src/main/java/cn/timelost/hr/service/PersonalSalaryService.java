@@ -16,7 +16,7 @@ public interface PersonalSalaryService {
     PageInfo<PersonalSalary> findAll(int year, int month, String departmentName, int personalId, int pageNum, int pageSize);
     List<PersonalSalary> all();
 
-    PersonalSalary find(int id);
+    PersonalSalary find2(int id);
 
     void insert(PersonalSalaryForm personalSalaryForm);
 
